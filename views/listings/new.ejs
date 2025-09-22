@@ -1,0 +1,76 @@
+<% layout('layouts/boilerplate.ejs') -%>
+
+<body>
+  <div class="container col-md-8 offset-md-2 mt-4">
+    <form method="POST" action="/listings" novalidate class="needs-validation shadow p-4 rounded bg-light" enctype="multipart/form-data">
+      <h3 class="text-center mb-4"><b>Add a New Listing</b></h3>
+
+      <!-- Title -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="listing[title]" class="form-control" id="title" placeholder="Enter Title" required>
+        <div class="invalid-feedback">Please provide a title.</div>
+      </div>
+
+      <!-- Description -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="listing[description]" class="form-control" id="description" rows="3" required></textarea>
+        <div class="invalid-feedback">Please provide a description.</div>
+      </div>
+
+      <!-- Image -->
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload Image</label>
+        <input type="file" class="form-control" id="image" name="listing[image]">
+        <div class="invalid-feedback">Please provide a valid image.</div>
+      </div>
+
+
+
+      <!-- Price & Location -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="price" class="form-label">Price</label>
+          <input type="number" class="form-control" id="price" name="listing[price]" placeholder="Enter Price" min="0" step="0.01" required>
+          <div class="invalid-feedback">Price must be provided.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="location" class="form-label">Location</label>
+          <input type="text" class="form-control" id="location" name="listing[location]" placeholder="Enter Location" required>
+          <div class="invalid-feedback">Location is required.</div>
+        </div>
+      </div>
+
+      <!-- Country -->
+      <div class="mb-3">
+        <label for="country" class="form-label">Country</label>
+        <input type="text" class="form-control" id="country" name="listing[country]" placeholder="Enter Country" required>
+        <div class="invalid-feedback">Country is required.</div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="d-flex justify-content-between">
+        <a href="/listings" class="btn btn-secondary">Back</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Enable Bootstrap validation styles
+    (() => {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
+</body>
