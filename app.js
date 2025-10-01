@@ -67,9 +67,7 @@ const sessionOptions = {
   },
 }
 
-app.get("/", (req, res) => {
-  res.render("listings/index.ejs");  // or listingController.main if you want
-});
+
 
 // app.get("/",(req,res)=>{
 //     res.send("working");
@@ -89,6 +87,10 @@ app.use((req, res, next) => {
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user;
   next();
+});
+
+app.get("/", (req, res) => {
+  res.render("listings/index.ejs");
 });
 
 app.use("/listings", listingsRouter);
