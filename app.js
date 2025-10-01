@@ -105,7 +105,7 @@ app.get('/listings', (req, res) => {
     listing.title.toLowerCase().includes(search)
   );
   // Render the index page with filtered listings
-  res.render('listings/index', { allListings: filteredListings });
+  res.render('/listing', { allListings: filteredListings });
 });
 
 // ✅ Alternative approach with regex
