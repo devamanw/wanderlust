@@ -97,16 +97,6 @@ app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
 
-app.get('/listings', (req, res) => {
-  const search = req.query.search ? req.query.search.toLowerCase() : "";
-  // Filter listings by city name or hotel name based on search
-  let filteredListings = listings.filter(listing => 
-    listing.location.toLowerCase().includes(search) ||
-    listing.title.toLowerCase().includes(search)
-  );
-  // Render the index page with filtered listings
-  res.render('/listing', { allListings: filteredListings });
-});
 
 // ✅ Alternative approach with regex
 app.all(/.*/, (req, res, next) => {
