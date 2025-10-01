@@ -103,6 +103,6 @@ module.exports.searchListings = async (req, res) => {
     ]
   });
 
-  res.render("listings/index", { listings: results, searchQuery: query });
+  res.render("listings/search", { listings: results, searchQuery: query });
 };
 
