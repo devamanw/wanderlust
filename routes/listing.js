@@ -13,7 +13,8 @@ router.route("/")
 .get(wrapAsync(listingController.index))//Index Route
 .post(isLoggedIn,validateListing,upload.single("listing[image]"), wrapAsync(listingController.createListing)); //create route
 
-
+// Search route
+router.get("/search", wrapAsync(listingController.searchListings));
 //New Route
 router.get("/new",isLoggedIn, listingController.renderNewForm);
 
