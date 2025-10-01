@@ -67,7 +67,9 @@ const sessionOptions = {
   },
 }
 
-
+app.get("/", (req, res) => {
+  res.render("listings/index.ejs");  // or listingController.main if you want
+});
 
 // app.get("/",(req,res)=>{
 //     res.send("working");
