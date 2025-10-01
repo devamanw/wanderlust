@@ -90,7 +90,8 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.render("listings/index.ejs");
+  const allListings = await Listing.find({});
+  res.render("listings/index.ejs", { allListings });
 });
 
 app.use("/listings", listingsRouter);
